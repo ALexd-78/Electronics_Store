@@ -11,7 +11,7 @@ class Item:
         self.name = name
         self.price = price
         self.count = count
-        self.all += (self, name, price, count)
+        self.all.append(self)
 
     def calculate_total_price(self):
         self.total_price = self.price * self.count * self.pay_rate
