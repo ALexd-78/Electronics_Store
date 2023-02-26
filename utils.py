@@ -19,9 +19,9 @@ class Item:
         return self.__name
 
     @name.setter
-    '''Проверяет, чтобы длина наименования товара не была более 10 символов,
-    иначе возвращает ошибку'''
     def name(self, value: str):
+        '''Проверяет, чтобы длина наименования товара не была более 10 символов,
+            иначе возвращает ошибку'''
         if len(value) > 10:
             print("Exception: Длина наименования товара превышает 10 символов.")
         else:
@@ -59,24 +59,24 @@ class Item:
         return isInt
         
 
-# item1 = Item("Смартфон", 10000, 20)
-# item2 = Item("Ноутбук", 20000, 5)
-#
-# print(item1.calculate_total_price())
-# print(item2.calculate_total_price())
-#
-# )Item.pay_rate = 0.8  # устанавливаем новый уровень цен
-# item1.apply_discount()
-# print(item1.price)
-# print(item2.price)
-#
-# print(Item.all
+item1 = Item("Смартфон", 10000, 20)
+item2 = Item("Ноутбук", 20000, 5)
 
-# item = Item('Телефон', 10000, 5)
-# item.name = 'Смартфон'
-# print(item.name)
+print(item1.calculate_total_price())
+print(item2.calculate_total_price())
 
-# item.name = 'СуперСмартфон'
+Item.pay_rate = 0.8  # устанавливаем новый уровень цен
+item1.apply_discount()
+print(item1.price)
+print(item2.price)
+
+print(Item.all)
+
+item = Item('Телефон', 10000, 5)
+item.name = 'Смартфон'
+print(item.name)
+
+item.name = 'СуперСмартфон'
 
 Item.instantiate_from_csv()
 print(len(Item.all))
@@ -84,6 +84,6 @@ print(len(Item.all))
 i = Item.all[1]
 print(i.price)
 
-print(Item.is_integer("i.price"))
+print(Item.is_integer(i.price))
 print(Item.is_integer(5.0))
 print(Item.is_integer(5.5))
