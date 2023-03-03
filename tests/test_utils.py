@@ -37,3 +37,9 @@ def test_is_integer():
     assert Item.is_integer(5.5) is False
 
 
+def test_repr(item):
+    assert item.__repr__() == "Item('Смартфон', 10000, 5)"
+
+
+def test_str(item):
+    assert item.__str__() == "Смартфон"

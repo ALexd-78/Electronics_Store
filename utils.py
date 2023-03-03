@@ -20,7 +20,7 @@ class Item:
 
 
     def __str__(self) -> str:
-        ''''''
+        '''Выводит информацию пользователю об экзмпляре класса '''
         return f"{self.__name}"
 
     @property
