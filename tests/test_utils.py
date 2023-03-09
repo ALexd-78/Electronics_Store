@@ -2,7 +2,7 @@ import pytest
 from utils import Item
 
 
-@pytest.fixture()
+@pytest.fixture
 def item():
     return Item("Смартфон", 10000, 5)
 
