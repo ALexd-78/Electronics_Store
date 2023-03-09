@@ -79,7 +79,7 @@ class Phone(Item):
 
     def __repr__(self) -> str:
         '''Выводит полную информацию экземпляра класса'''
-        return f"Item('{self.name}', {self.price}, {self.quantity}, {self.__number_of_sim})"
+        return f"Phone('{self.name}', {self.price}, {self.quantity}, {self.__number_of_sim})"
 
 
     def __add__(self, other):
@@ -102,14 +102,16 @@ class Phone(Item):
         else:
             self.__number_of_sim = value
 
+
+item1 = Item("Смартфон", 10000, 20)
 phone1 = Phone("iPhone 14", 120_000, 5, 2)
 # print(phone1)
 # print(repr(phone1))
-item1 = Item("Смартфон", 10000, 20)
-# print(phone1 + item1)
 
-phone1.number_of_sim = 1
-print(phone1.number_of_sim)
+# print(phone1 + item1)
+#
+# phone1.number_of_sim = 0
+# print(phone1.number_of_sim)
 # print(item1.__repr__())
 
 # print(item1 + 1000)
