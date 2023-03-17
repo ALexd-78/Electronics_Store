@@ -5,11 +5,14 @@ class Item:
     pay_rate = 1  # уровень цены на товар
     all = []
 
-    def __init__(self, name, price, quantity):
+    def __init__(self, name='', price=0, quantity=0, **kwargs):
+
         self.__name = name
         self.price = price
         self.quantity = quantity
         self.all.append(self)
+        super().__init__(**kwargs)
+
 
     def __repr__(self) -> str:
         '''Выводит полную информацию экземпляра класса'''
@@ -103,43 +106,39 @@ class Phone(Item):
             self.__number_of_sim = value
 
 
-item1 = Item("Смартфон", 10000, 20)
-phone1 = Phone("iPhone 14", 120_000, 5, 2)
-# print(phone1)
-# print(repr(phone1))
+class MixinKeyboard:
+    '''Класс для хранения и изменеия раскладки клавиатуры'''
+    def __init__(self, language='EN', **kwargs):
+        self.__language = language
+        super().__init__(**kwargs)
 
-# print(phone1 + item1)
-#
-# phone1.number_of_sim = 0
-# print(phone1.number_of_sim)
-# print(item1.__repr__())
 
-# print(item1 + 1000)
+    '''Делает атрибут приватным'''
+    @property
+    def language(self):
+        return self.__language
 
-# item2 = Item("Ноутбук", 20000, 5)
 
-# print(item1.calculate_total_price())
-# print(item2.calculate_total_price())
+    def change_lang(self):
+        '''Меняет раскладку клавиатуры'''
+        self.__language = 'RU'
+        return self.__language
 
-# Item.pay_rate = 0.8  # устанавливаем новый уровень цен
-# item1.apply_discount()
-# print(item1.price)
-# print(item2.price)
 
-# print(Item.all)
+class KeyBoard(Item, MixinKeyboard):
+# class KeyBoard(MixinKeyboard, Item):
 
-# item = Item('Телефон', 10000, 5)
-# item.name = 'Смартфон'
-# print(item.name)
+    def calc(self):
+        pass
 
-# item.name = 'СуперСмартфон'
 
-# Item.instantiate_from_csv()
-# print(len(Item.all))
-#
-# i = Item.all[1]
-# print(i.price)
-#
-# print(Item.is_integer(5))
-# print(Item.is_integer(5.0))
-# print(Item.is_integer(5.5))
+
+
+# print(KeyBoard.mro())
+kb = KeyBoard('Dark Project KD87A', 9600, 5)
+print(kb)
+print(kb.language)
+kb.change_lang()
+print(kb.language)
+# kb.language = 'CH'
+# print(kb.lang_en)
