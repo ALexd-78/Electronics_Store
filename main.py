@@ -1,17 +1,24 @@
-from utils import Item
+class Item:
 
-# item = Item('Телефон', 10000, 5)
-# item.name = 'Смартфон'
-# print(item.name)
+    def __init__(self, name="", price=0, **kwargs):
+        self.name = name
+        self.price = price
+        super().__init__(**kwargs)
 
-# item.name = 'СуперСмартфон'
 
-Item.instantiate_from_csv()  # создание объектов из данных файла
-print(len(Item.all))  # в файле 5 записей с данными по товарам
-5
-item1 = Item.all[0]
-print(item1.name)
+class KeyBoardMixin:
 
-print(Item.is_integer(5))
-print(Item.is_integer(5.0))
-print(Item.is_integer(5.5))
+    def __init__(self, language="en", **kwargs):
+        self.language = language
+        super().__init__(**kwargs)
+
+
+class Keyboard(KeyBoardMixin, Item):
+# class Keyboard(Item, KeyBoardMixin):
+
+    def __repr__(self):
+        return f"{self.name}, {self.price}, {self.language}"
+
+k = Keyboard(language="ru", name="My Stubid Keyboard", price=2000)
+
+print(k)

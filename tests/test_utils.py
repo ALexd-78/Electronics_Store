@@ -1,5 +1,5 @@
 import pytest
-from utils import Item, Phone
+from utils import Item, Phone, MixinKeyboard, KeyBoard
 
 
 @pytest.fixture
@@ -13,6 +13,10 @@ def phone():
     phone = Phone("iPhone 14", 120_000, 5, 2)
     return phone
 
+@pytest.fixture
+def mix():
+    mix = MixinKeyboard(language='EN')
+    return mix
 
 def test_item_init(item):
     assert item.name == "Смартфон"
@@ -37,12 +41,14 @@ def test_name(item):
 
 
 def test_name_setter(item):
+    '''Проверяет исключение'''
     with pytest.raises(Exception):
         item.name = 'СуперСмартфон'
     item.name = 'Смартфон'
 
 
 def test_is_integer():
+    '''Проверяет целое ли число'''
     assert Item.is_integer(5) is True
     assert Item.is_integer(5.0) is True
     assert Item.is_integer(5.5) is False
@@ -86,3 +92,19 @@ def test_number_of_sim_setter(phone):
     with pytest.raises(ValueError):
         phone.number_of_sim = 0
     assert phone.number_of_sim == 2
+
+
+def test_mixin_init(mix):
+    assert mix.language == 'EN'
+
+
+def test_change_lang(mix):
+    assert mix.change_lang() == 'RU'
+
+
+def test_kb_init():
+    kb = KeyBoard('Dark Project KD87A', 9600, 5)
+    assert kb.name == 'Dark Project KD87A'
+    assert kb.price == 9600
+    assert kb.quantity == 5
+    assert kb.language == 'EN'
