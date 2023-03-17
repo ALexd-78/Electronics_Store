@@ -1,0 +1,85 @@
+[33mcommit 5d2dcd03b737a9e496513c7595e086671e371e4e[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m)[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Fri Mar 17 17:51:25 2023 +0300
+
+    Создал класс Keyboard и MixinKeyboard
+    Прописал тесты классов Keyboard и MixinKeyboard
+
+[33mcommit 8ca9910dbd66f6930b0efeb8661ad2617a3d25b6[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Fri Mar 17 17:50:40 2023 +0300
+
+    Прописал тесты классов Keyboard и MixinKeyboard
+
+[33mcommit 5ad7cbf03f5f1e72654e43f3bda906dafbcdf387[m[33m ([m[1;31morigin/develop[m[33m)[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Fri Mar 10 01:30:08 2023 +0300
+
+    Прописал тесты для класса Phone и его методов __repr__, __add__, nimber_of_sim
+
+[33mcommit 04732d5be441b2cfe0756aad26dc2933fdab8ba0[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Thu Mar 9 23:29:21 2023 +0300
+
+    Добвален класс Phone и его методы __repr__, __add__, nimber_of_sim
+
+[33mcommit 5249a9bd505a1a54d5e434a31e10d8453b85ec20[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Thu Mar 9 00:11:08 2023 +0300
+
+    Дополнены тесты в test_utils.py
+
+[33mcommit e44ac817c7c4d1f0e48b195de831b4cf255ae9ab[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Sat Mar 4 00:58:20 2023 +0300
+
+    Прописал тесты для магических методов __repr__ и __str__
+
+[33mcommit 71941528157c30818096171b266dbe54289ee606[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Sat Mar 4 00:45:13 2023 +0300
+
+    Добавлены магические методы __repr__ и __str__  в utils.py
+
+[33mcommit aef1681da31650659ad3f6e3998b8bedca88c2fa[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Sun Feb 26 17:05:15 2023 +0300
+
+    Дополнил тесты к новым методам
+
+[33mcommit fd2bbb4ea0cfcda57576c3a229cab82ec1d78689[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Sun Feb 26 13:54:43 2023 +0300
+
+    Реализовал методы с декораторами @property, @name.setter, @classmethod и @staticmethod
+
+[33mcommit 4500b0f506ef7a890f4bfd0fa55c7f45ac6cff6f[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Tue Feb 21 23:58:59 2023 +0300
+
+    Прописал фикстуру в conftest.py
+
+[33mcommit bface50d851255dd8788c21c6d30b5cdb75035f7[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Sun Feb 19 19:46:56 2023 +0300
+
+    Прописал тесты в test_utils.py
+
+[33mcommit c1bab7bf2f5b59b2200cf315ddc745bd3f6e96ec[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Thu Feb 16 09:26:49 2023 +0300
+
+    Создание класса Item, его атрибутов и методов
+
+[33mcommit c93469eade5d2b0ca7bc1fb3d9ff96534386bc21[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Thu Feb 16 02:35:10 2023 +0300
+
+    Создание веток локального окружения
+    создание файлов .gitignore и README.md
+
+[33mcommit 1b7a071cd8bef8a1eb56857e7c98bc37e1788b0f[m
+Author: ALexd-78 <alexd-78@yandex.ru>
+Date:   Thu Feb 16 02:21:25 2023 +0300
+
+    Начало создания проекта
