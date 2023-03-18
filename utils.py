@@ -131,18 +131,18 @@ class MixinKeyboard:
 class KeyBoard(Item, MixinKeyboard):
 # class KeyBoard(MixinKeyboard, Item):
 
-    def calc(self):
-        pass
+    def __repr__(self) -> str:
+        return super().__repr__().replace('Item', 'KeyBoard')
 
 
 
 
 # print(KeyBoard.mro())
 kb = KeyBoard('Dark Project KD87A', 9600, 5)
-print(kb)
-print(kb.language)
-kb.change_lang()
-print(kb.language)
-kb.change_lang()
-print(kb.language)
+print(kb.__repr__())
+# print(kb.language)
+# kb.change_lang()
+# print(kb.language)
+# kb.change_lang()
+# print(kb.language)
 # kb.language = 'CH'
