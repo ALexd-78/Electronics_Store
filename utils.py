@@ -121,8 +121,11 @@ class MixinKeyboard:
 
     def change_lang(self):
         '''Меняет раскладку клавиатуры'''
-        self.__language = 'RU'
-        return self.__language
+        if self.__language == 'EN':
+            self.__language = 'RU'
+        else:
+            self.__language = 'EN'
+
 
 
 class KeyBoard(Item, MixinKeyboard):
@@ -140,5 +143,6 @@ print(kb)
 print(kb.language)
 kb.change_lang()
 print(kb.language)
+kb.change_lang()
+print(kb.language)
 # kb.language = 'CH'
-# print(kb.lang_en)
