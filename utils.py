@@ -1,4 +1,8 @@
 import csv
+import pprint
+
+class InstantiateCSVError(Exception):
+    pass
 
 
 class Item:
@@ -51,19 +55,23 @@ class Item:
         '''Считывает данные из csv-файла и создает экземпляры класса,
         инициализируя их данными из файла'''
         items = []
-        with open('items.csv') as file:
-            data = csv.DictReader(file)
-            for i in data:
-                if cls.is_integer(i['price']):
-                    price = int(float(i['price']))
-                else:
-                    price = float(i['price'])
-                if cls.is_integer(i['quantity']):
-                    quantity = int(float(i['quantity']))
-                else:
-                    quantity = float(i['quantity'])
-                items.append(cls(i['name'], price, quantity))
+        try:
+            with open('items.csv', 'r', encoding='windows-1251') as file:
+               data = csv.DictReader(file)
+               for i in data:
+                   if list(i.keys()) == ["name", "price", "quantity"]:
+                       name = i['name']
+                       price = int(i['price'])
+                       quantity = int(i['quantity'])
+                       items.append(cls(name, price, quantity))
+                   else:
+                       raise InstantiateCSVError
+        except FileNotFoundError:
+            print("Отсутствует файл item.csv")
+        except InstantiateCSVError:
+            print("Файл item.csv поврежден")
         return items
+
 
     @staticmethod
     def is_integer(x):
@@ -134,12 +142,11 @@ class KeyBoard(Item, MixinKeyboard):
     def __repr__(self) -> str:
         return super().__repr__().replace('Item', 'KeyBoard')
 
-
-
-
+Item.instantiate_from_csv()  # создание объектов из данных файла
+pprint.pprint(Item.all)  # в файле 5 записей с данными по товарам
 # print(KeyBoard.mro())
-kb = KeyBoard('Dark Project KD87A', 9600, 5)
-print(kb.__repr__())
+# kb = KeyBoard('Dark Project KD87A', 9600, 5)
+# print(kb.__repr__())
 # print(kb.language)
 # kb.change_lang()
 # print(kb.language)
