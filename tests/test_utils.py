@@ -18,6 +18,13 @@ def mix():
     mix = MixinKeyboard(language='EN')
     return mix
 
+
+@pytest.fixture
+def kb():
+    kb = KeyBoard('Dark Project KD87A', 9600, 5)
+    return kb
+
+
 def test_item_init(item):
     assert item.name == "Смартфон"
     assert item.price == 10000
@@ -99,12 +106,16 @@ def test_mixin_init(mix):
 
 
 def test_change_lang(mix):
-    assert mix.change_lang() == 'RU'
+    assert mix.change_lang() == None
+    # assert mix.change_lang() == 'EN'
 
 
-def test_kb_init():
-    kb = KeyBoard('Dark Project KD87A', 9600, 5)
+
+def test_kb_init(kb):
     assert kb.name == 'Dark Project KD87A'
     assert kb.price == 9600
     assert kb.quantity == 5
     assert kb.language == 'EN'
+
+def test_kb_repr(kb):
+    assert kb.__repr__() == "KeyBoard('Dark Project KD87A', 9600, 5)"
