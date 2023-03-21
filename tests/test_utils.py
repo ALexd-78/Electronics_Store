@@ -1,5 +1,5 @@
 import pytest
-from utils import Item, Phone, MixinKeyboard, KeyBoard
+from utils import Item, Phone, MixinKeyboard, KeyBoard, InstantiateCSVError
 
 
 @pytest.fixture
@@ -13,6 +13,7 @@ def phone():
     phone = Phone("iPhone 14", 120_000, 5, 2)
     return phone
 
+
 @pytest.fixture
 def mix():
     mix = MixinKeyboard(language='EN')
@@ -24,6 +25,11 @@ def kb():
     kb = KeyBoard('Dark Project KD87A', 9600, 5)
     return kb
 
+
+@pytest.fixture
+def filename():
+    filename = 'items.csv'
+    return filename
 
 def test_item_init(item):
     assert item.name == "Смартфон"
@@ -110,12 +116,19 @@ def test_change_lang(mix):
     # assert mix.change_lang() == 'EN'
 
 
-
 def test_kb_init(kb):
     assert kb.name == 'Dark Project KD87A'
     assert kb.price == 9600
     assert kb.quantity == 5
     assert kb.language == 'EN'
 
+
 def test_kb_repr(kb):
     assert kb.__repr__() == "KeyBoard('Dark Project KD87A', 9600, 5)"
+
+
+def test_raise_instantiate_from_csv(filename):
+    '''Проверяет исключение'''
+    with pytest.raises(InstantiateCSVError):
+        filename = 'item.csv'
+    filename = 'items.csv'

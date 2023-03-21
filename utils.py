@@ -56,20 +56,21 @@ class Item:
         инициализируя их данными из файла'''
         items = []
         try:
-            with open('items.csv', 'r', encoding='windows-1251') as file:
-               data = csv.DictReader(file)
-               for i in data:
-                   if list(i.keys()) == ["name", "price", "quantity"]:
-                       name = i['name']
-                       price = int(i['price'])
-                       quantity = int(i['quantity'])
-                       items.append(cls(name, price, quantity))
-                   else:
-                       raise InstantiateCSVError
+            filename = 'items.csv'
+            with open(filename, 'r', encoding='windows-1251') as file:
+                data = csv.DictReader(file)
+                for i in data:
+                    if list(i.keys()) == ["name", "price", "quantity"]:
+                        name = i['name']
+                        price = int(i['price'])
+                        quantity = int(i['quantity'])
+                        items.append(cls(name, price, quantity))
+                    else:
+                        raise InstantiateCSVError
         except FileNotFoundError:
-            print("Отсутствует файл item.csv")
+            print("Отсутствует файл items.csv")
         except InstantiateCSVError:
-            print("Файл item.csv поврежден")
+            print("Файл items.csv поврежден")
         return items
 
 
@@ -143,7 +144,9 @@ class KeyBoard(Item, MixinKeyboard):
         return super().__repr__().replace('Item', 'KeyBoard')
 
 Item.instantiate_from_csv()  # создание объектов из данных файла
-pprint.pprint(Item.all)  # в файле 5 записей с данными по товарам
+# pprint.pprint(Item.all)  # в файле 5 записей с данными по товарам
+# item1 = Item.all[0]
+# print(item1.name)
 # print(KeyBoard.mro())
 # kb = KeyBoard('Dark Project KD87A', 9600, 5)
 # print(kb.__repr__())
