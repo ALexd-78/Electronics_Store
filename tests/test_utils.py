@@ -1,4 +1,7 @@
+import contextlib
+import io
 import pytest
+
 from utils import Item, Phone, MixinKeyboard, KeyBoard, InstantiateCSVError
 
 
@@ -127,8 +130,9 @@ def test_kb_repr(kb):
     assert kb.__repr__() == "KeyBoard('Dark Project KD87A', 9600, 5)"
 
 
-def test_raise_instantiate_from_csv(filename):
+def test_raise_instantiate_from_csv(item):
     '''Проверяет исключение'''
-    with pytest.raises(InstantiateCSVError):
-        filename = 'item.csv'
-    filename = 'items.csv'
+    s = io.StringIO()
+    with contextlib.redirect_stdout(s):  # Перехватываем поток вывода
+        item.instantiate_from_csv('wrongfile.csv')  # Передаем некорректный путь
+        assert s.getvalue() == "Отсутствует файл items.csv\n"
