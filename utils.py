@@ -2,6 +2,7 @@ import csv
 import pprint
 
 class InstantiateCSVError(Exception):
+    '''Класс исключения при обработке csv-файла'''
     pass
 
 
@@ -51,12 +52,12 @@ class Item:
         return self.price
 
     @classmethod
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls, filename='items.csv'):
         '''Считывает данные из csv-файла и создает экземпляры класса,
         инициализируя их данными из файла'''
         items = []
+        # filename = 'items.csv'
         try:
-            filename = 'items.csv'
             with open(filename, 'r', encoding='windows-1251') as file:
                 data = csv.DictReader(file)
                 for i in data:
@@ -143,10 +144,12 @@ class KeyBoard(Item, MixinKeyboard):
     def __repr__(self) -> str:
         return super().__repr__().replace('Item', 'KeyBoard')
 
+
+
 Item.instantiate_from_csv()  # создание объектов из данных файла
 # pprint.pprint(Item.all)  # в файле 5 записей с данными по товарам
-# item1 = Item.all[0]
-# print(item1.name)
+item1 = Item.all[0]
+print(item1.name)
 # print(KeyBoard.mro())
 # kb = KeyBoard('Dark Project KD87A', 9600, 5)
 # print(kb.__repr__())
