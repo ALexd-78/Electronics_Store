@@ -56,7 +56,6 @@ class Item:
         '''Считывает данные из csv-файла и создает экземпляры класса,
         инициализируя их данными из файла'''
         items = []
-        # filename = 'items.csv'
         try:
             with open(filename, 'r', encoding='windows-1251') as file:
                 data = csv.DictReader(file)
@@ -67,6 +66,7 @@ class Item:
                         quantity = int(i['quantity'])
                         items.append(cls(name, price, quantity))
                     else:
+
                         raise InstantiateCSVError
         except FileNotFoundError:
             print("Отсутствует файл items.csv")
@@ -146,10 +146,12 @@ class KeyBoard(Item, MixinKeyboard):
 
 
 
-Item.instantiate_from_csv()  # создание объектов из данных файла
-# pprint.pprint(Item.all)  # в файле 5 записей с данными по товарам
-item1 = Item.all[0]
-print(item1.name)
+# Item.instantiate_from_csv()  # создание объектов из данных файла
+Item.instantiate_from_csv('items2.csv')  # создание объектов из данных файла
+print(Item.all)  # в файле 5 записей с данными по товарам
+
+# item1 = Item.all[0]
+# print(item1.name)
 # print(KeyBoard.mro())
 # kb = KeyBoard('Dark Project KD87A', 9600, 5)
 # print(kb.__repr__())
