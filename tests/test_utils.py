@@ -131,8 +131,15 @@ def test_kb_repr(kb):
 
 
 def test_raise_instantiate_from_csv(item):
-    '''Проверяет исключение'''
+    '''Проверяет исключение - отсутствие файла'''
     s = io.StringIO()
     with contextlib.redirect_stdout(s):  # Перехватываем поток вывода
         item.instantiate_from_csv('wrongfile.csv')  # Передаем некорректный путь
         assert s.getvalue() == "Отсутствует файл items.csv\n"
+
+
+def test_raise_instantiate_from_csv(item):
+    '''Проверяет исключение - повреждение файла'''
+    with pytest.raises(InstantiateCSVError):
+        assert item.instantiate_from_csv('items2.csv') == "Файл items.csv поврежден"
+
