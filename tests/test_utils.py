@@ -140,6 +140,8 @@ def test_raise_instantiate_from_csv(item):
 
 def test_raise_instantiate_from_csv(item):
     '''Проверяет исключение - повреждение файла'''
-    with pytest.raises(InstantiateCSVError):
-        assert item.instantiate_from_csv('items2.csv') == "Файл items.csv поврежден"
+    s = io.StringIO()
+    with contextlib.redirect_stdout(s):#Входим в контекст потока вывода
+        item.instantiate_from_csv('items2.csv') #Вызыаем проверяемую функцию
+        assert s.getvalue() == "Файл items.csv поврежден\n" #Проверяем совпадение сообщения из потока вывода с ожидаемым результатом
 
